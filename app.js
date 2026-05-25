@@ -48,6 +48,12 @@
   const sortSelect = document.getElementById('sortSelect');
   const filterBar = document.getElementById('filterBar');
   const toast = document.getElementById('toast');
+  const officialPanel = document.getElementById('officialPanel');
+  const tjLink = document.getElementById('tjLink');
+  const kyLink = document.getElementById('kyLink');
+
+  const TJ_BASE = 'https://www.tjmedia.com/tjsong/song_search.asp?searchDiv=1&searchText=';
+  const KY_BASE = 'https://www.kumyoung.co.kr/search/songSearch.asp?search_word=&search_type=1&search_word=';
 
   function init() {
     buildFilters();
@@ -151,19 +157,28 @@
     toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
   }
 
+  function updateOfficialLinks() {
+    const enc = encodeURIComponent(searchQuery);
+    tjLink.href = searchQuery ? TJ_BASE + enc : 'https://www.tjmedia.com/tjsong/song_search.asp';
+    kyLink.href = searchQuery ? KY_BASE + enc : 'https://www.kumyoung.co.kr/search/songSearch.asp';
+    officialPanel.classList.toggle('has-query', !!searchQuery);
+  }
+
   function render() {
     const filtered = filter(SONGS);
     const sorted = sort(filtered);
     const q = searchQuery;
 
+    updateOfficialLinks();
     statsEl.textContent = `${sorted.length}곡`;
 
     if (sorted.length === 0) {
+      const enc = encodeURIComponent(q);
       resultsEl.innerHTML = `
         <div class="empty-state">
           <div class="emoji">🎤</div>
-          <h3>검색 결과가 없습니다</h3>
-          <p>다른 검색어나 장르를 선택해보세요</p>
+          <h3>내부 DB에 없는 곡이에요</h3>
+          <p>위의 공식 사이트 버튼으로<br>TJ·KY 전체 DB에서 찾아보세요</p>
         </div>`;
       return;
     }

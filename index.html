@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="노래방 번호 검색 - TJ태진, KY금영 노래 코드를 빠르게 찾아보세요">
+  <meta name="theme-color" content="#0d0d1a">
+  <title>노래방 번호 검색</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-logo">
+      <span class="mic-icon">🎤</span>
+      <h1>노래방 번호 검색</h1>
+    </div>
+    <p>TJ 태진 · KY 금영 코드를 한번에</p>
+  </header>
+
+  <section class="search-section">
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="노래 제목, 가수명, 코드번호로 검색"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+      >
+      <button class="clear-btn" id="clearBtn" aria-label="검색어 지우기">✕</button>
+    </div>
+  </section>
+
+  <div class="filter-bar" id="filterBar"></div>
+
+  <div class="stats-bar">
+    <span class="stats-text" id="statsText">로딩 중...</span>
+    <select class="sort-select" id="sortSelect" aria-label="정렬 기준">
+      <option value="title">제목순</option>
+      <option value="artist">가수순</option>
+      <option value="tj">TJ 번호순</option>
+      <option value="ky">KY 번호순</option>
+    </select>
+  </div>
+
+  <main class="results-container" id="results"></main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="songs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

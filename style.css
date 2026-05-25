@@ -476,6 +476,43 @@ body {
   .code-badge .label { font-size: 0.62rem; }
 }
 
+/* Load more button */
+.load-more-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 4px;
+  background: var(--surface);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.load-more-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Skeleton card */
+.skeleton-card {
+  pointer-events: none;
+}
+
+/* Badge link (외부 사이트 링크) */
+.badge-link {
+  text-decoration: none;
+  font-size: 0.78rem !important;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
